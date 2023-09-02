@@ -69,4 +69,6 @@ UPDATE Cases SET Case_Detail = 'New Case Description' WHERE CaseID = 3;
 INSERT INTO Prisoners (Race, Height, Sex, Eye_Color, Prison_Sentence, CaseID, FacilityID)
 VALUES ('White', 1.75, 'M', 'Brown', 10, 5, 1);
 
-![Uploading image.png…]()
+
+
+
