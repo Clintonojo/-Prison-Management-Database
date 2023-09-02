@@ -1,6 +1,5 @@
 # Prison Management Database
 
-![Database Schema](link_to_database_schema_image)
 
 This is a database for managing information related to inmates, cases, and facilities in a prison system. It allows you to store and retrieve data about inmates, their cases, and the facilities they are assigned to.
 
