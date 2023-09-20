@@ -9,6 +9,22 @@ CREATE TABLE Prison (
     FacillityID INT
  
 );
+
+--VIEW
+CREATE VIEW Main AS
+SELECT Race,Sex,Prison_Sentence
+FROM Prison;
+
+SELECT*FROM Main;
+
+
+Create VIEW Subcat AS
+SELECT inmate_id,Height,Eye_Color,CaseID
+From Prison;
+
+SELECT*FROM Subcat;
+
+
 -- U need to remove , beforw the end
 
 Create Table
@@ -48,7 +64,8 @@ Select*FROM CaseTable;
 
 SELECT*FROM Prison;
 SELECT*FROM CaseTable;
-
+SELECT*FROM Prison;
+SELECT*FROM Facillity;
 --This is Select from prison table and order By Height 
 Select*
 FROM Prison
@@ -61,6 +78,31 @@ WHERE Sex= 'M';
 
 UPDATE Prison
 SET CaseID = 5, FacillityID = 32
-WHERE inmate_id = 32;
+WHERE inmate_id = 5;
 
 /* Update Then Table name then set THE NEW ATTRIBUTE then where is like which row */
+
+
+--This View Tempoary table added to toghter
+CREATE VIEW RaceSex AS
+SELECT Race, Sex
+FROM Prison;
+
+SELECT * FROM RaceSex;--Tempoary table.
+
+
+Create View HeightEye_Color AS
+Select Height,Eye_Color
+FROM Prison;
+
+Select * FROM HeightEye_Color;
+
+--UPdate Inmate Information
+UPDATE Prison
+SET Race="Black",Sex="M"
+Where inmate_id=2;
+
+SELECT * FROM Prison;
+
+--Query to select > and finds sentnece less.
+SELECT*FROM Prison WHERE Prison_Sentence<20;
