@@ -1,72 +1,49 @@
-# Prison Management Database
+# Prison Database SQL Queries
 
+This repository contains SQL queries for managing a hypothetical "Prison Database." The database consists of tables for inmates, cases, facilities, and two views for data retrieval. Below is an overview of the SQL code and its functionality.
 
-This is a database for managing information related to inmates, cases, and facilities in a prison system. It allows you to store and retrieve data about inmates, their cases, and the facilities they are assigned to.
+## Database Schema
 
-## Table of Contents
+The database consists of the following tables:
 
-- [Introduction](#introduction)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Database Schema](#database-schema)
-- [Sample Queries](#sample-queries)
-- [Contributing](#contributing)
-- [License](#license)
+1. **Prison**: Contains information about inmates, including their race, height, sex, eye color, prison sentence, and associations with cases and facilities.
 
-## Introduction
+2. **CaseTable**: Stores details about legal cases, with a unique CaseID and Case_Detail.
 
-The Prison Management Database is designed to streamline the management of inmate information within a prison system. It provides a structured way to store data about inmates, including their personal details, case information, and facility assignments.
+3. **Facillity**: Represents prison facilities, each identified by a unique FacillityID, with a name and location.
 
-## Getting Started
+## Views
 
-### Prerequisites
+Two views have been created to facilitate data retrieval:
 
-Before you can use this database, you will need:
+1. **Main View (Main)**: Provides a simplified view of inmate data, including their race, sex, and prison sentence.
 
-- MySQL or another compatible relational database management system (RDBMS).
-- A SQL client for interacting with the database (e.g., MySQL Workbench).
+2. **Subcat View (Subcat)**: Offers a subset of inmate data, including inmate_id, height, eye color, and CaseID.
 
-### Installation
+## Queries
 
-1. Clone this repository to your local machine:
+Here's a summary of the SQL queries in this repository:
 
-   ```bash
-   git clone https://github.com/Clintonojo/prison-management-database.git
+1. **Data Insertion**: Inserts sample data into the Prison, CaseTable, and Facillity tables to populate the database.
 
+2. **Data Retrieval**: Queries to retrieve data from the database, such as listing inmates, cases, facilities, and using views.
 
-   Import the SQL script provided in the sql directory into your RDBMS to create the database schema and populate it with sample data.
+3. **Data Modification**: Includes updates to inmate information and filtering records based on specific conditions.
 
-Connect your application or SQL client to the database using the connection details specified in the configuration file.
+4. **Data Analysis**: Queries for data analysis, like calculating averages and finding specific inmates.
 
-Usage
-To use the Prison Management Database, you can:
+## Usage
 
-Execute SQL queries to retrieve inmate information, case details, and facility data.
-Insert, update, or delete records as needed.
-Build applications that interact with the database to manage prison-related tasks.
-Database Schema
-The database schema consists of the following tables:
+You can use these SQL queries as a reference for managing and querying data in the Prison Database. Modify and adapt them as needed for your specific use case.
 
-Prisoners: Stores inmate details.
-Cases: Contains information about legal cases.
-Facilities: Stores data about prison facilities.
-Database Schema
+## Important Notes
 
-Sample Queries
-Here are some example SQL queries you can use with this database:
+- Please make sure to adjust the sample data and queries to suit your actual database needs.
+- Be cautious when using the `DROP TABLE` statement, as it permanently deletes tables and their data.
+- Always use SQL queries responsibly and consider security and data integrity.
 
+Feel free to explore, modify, and build upon these SQL queries for your own projects or educational purposes.
 
--- Retrieve all inmates in a specific facility
-SELECT * FROM Prisoners WHERE FacilityID = 1;
-
--- Update the case details for a specific inmate
-UPDATE Cases SET Case_Detail = 'New Case Description' WHERE CaseID = 3;
-
--- Insert a new inmate record
-INSERT INTO Prisoners (Race, Height, Sex, Eye_Color, Prison_Sentence, CaseID, FacilityID)
-VALUES ('White', 1.75, 'M', 'Brown', 10, 5, 1);
 
 
 
