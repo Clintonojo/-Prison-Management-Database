@@ -1,50 +1,45 @@
-# Prison Database SQL Queries
+Creating Tables:
 
-This repository contains SQL queries for managing a hypothetical "Prison Database." The database consists of tables for inmates, cases, facilities, and two views for data retrieval. Below is an overview of the SQL code and its functionality.
+The code starts by creating a table called Prison with columns like inmate_id, Race, Height, Sex, Eye_Color, Prison_Sentence, CaseID, and FacilityID. This table appears to store information about inmates.
+Creating Views:
 
-## Database Schema
+Two views, Main and Subcat, are created. Views are virtual tables that can be used to simplify queries. Main includes columns from the Prison table, and Subcat includes a subset of columns from the Prison table.
+Creating Additional Tables:
 
-The database consists of the following tables:
+Two more tables, CaseTable and Facility, are created. CaseTable seems to store details about criminal cases, and Facility stores information about prison facilities.
+Adding Foreign Keys:
 
-1. **Prison**: Contains information about inmates, including their race, height, sex, eye color, prison sentence, and associations with cases and facilities.
+Foreign key constraints are added to the Prison table to link it to the CaseTable and Facility tables, establishing relationships between them.
+Inserting Data:
 
-2. **CaseTable**: Stores details about legal cases, with a unique CaseID and Case_Detail.
+Sample data is inserted into the Prison, CaseTable, and Facility tables to populate them.
+Dropping Tables:
 
-3. **Facillity**: Represents prison facilities, each identified by a unique FacillityID, with a name and location.
+Commands to drop the Facility, Prison, and CaseTable tables are included. Be cautious with the DROP TABLE command as it permanently deletes tables and their data.
+Describing Tables:
 
-## Views
+The DESCRIBE command is used to display information about the structure of the Prison and CaseTable tables.
+Selecting Data:
 
-Two views have been created to facilitate data retrieval:
+Various SELECT statements are used to query data from the tables and views, demonstrating how to retrieve specific information.
+Updating Data:
 
-1. **Main View (Main)**: Provides a simplified view of inmate data, including their race, sex, and prison sentence.
+UPDATE statements are used to modify records in the Prison table.
+Creating Views (Temporary Tables):
 
-2. **Subcat View (Subcat)**: Offers a subset of inmate data, including inmate_id, height, eye color, and CaseID.
+Temporary views (RaceSex and HeightEye_Color) are created to simplify data access for specific columns.
+Trigger for Juvenile Records:
 
-## Queries
+A trigger named InsertIntoJuvenile is created to automatically insert records into a juvenile table when a new inmate under 18 is added to the Prison table. It calculates the inmate's age and checks if they are under 18 before insertion.
+Creating juvenile Table:
 
-Here's a summary of the SQL queries in this repository:
+The juvenile table is created to store records of juvenile inmates.
+Trigger for Female Inmates:
 
-1. **Data Insertion**: Inserts sample data into the Prison, CaseTable, and Facillity tables to populate the database.
+Another trigger named InsertIntoLadyPrison is created to insert records of female inmates into a lady_prison table when new inmates are added to the Prison table. It checks the Sex column for the value 'F' to identify female inmates.
+Selecting Data from lady_prison:
 
-2. **Data Retrieval**: Queries to retrieve data from the database, such as listing inmates, cases, facilities, and using views.
-
-3. **Data Modification**: Includes updates to inmate information and filtering records based on specific conditions.
-
-4. **Data Analysis**: Queries for data analysis, like calculating averages and finding specific inmates.
-
-## Usage
-
-You can use these SQL queries as a reference for managing and querying data in the Prison Database. Modify and adapt them as needed for your specific use case.
-
-## Important Notes
-
-- Please make sure to adjust the sample data and queries to suit your actual database needs.
-- Be cautious when using the `DROP TABLE` statement, as it permanently deletes tables and their data.
-- Always use SQL queries responsibly and consider security and data integrity.
-
-Feel free to explore, modify, and build upon these SQL queries for your own projects or educational purposes.
-
-
+A SELECT statement is used to retrieve data from the lady_prison table.
 
 
 
