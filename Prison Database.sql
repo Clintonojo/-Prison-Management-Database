@@ -106,3 +106,67 @@ SELECT * FROM Prison;
 
 --Query to select > and finds sentnece less.
 SELECT*FROM Prison WHERE Prison_Sentence<20;
+
+
+CREATE TABLE juvenile (
+    inmate_id INT AUTO_INCREMENT PRIMARY KEY,
+    Race VARCHAR(10),
+    Height DECIMAL(4, 2),
+    Sex VARCHAR(1),
+    Eye_Color VARCHAR(10),
+    Prison_Sentence INT,
+    CaseID INT,
+    FacillityID INT,
+    inmate_age INT
+);
+Drop TABLE juvenile;
+CREATE TRIGGER InsertIntoJuvenile
+AFTER INSERT ON hello.Prison -- Make sure to specify the correct schema/database name
+FOR EACH ROW
+BEGIN
+    DECLARE inmate_age INT;
+    
+    
+    
+    -- Check if the inmate is under 18
+    IF inmate_age < 18 THEN
+        INSERT INTO hello.juvenile (Race, Height, Sex, Eye_Color, Prison_Sentence, CaseID, FacillityID)
+        VALUES (NEW.Race, NEW.Height, NEW.Sex, NEW.Eye_Color, NEW.Prison_Sentence, NEW.CaseID, NEW.FacillityID);
+    END IF;
+END;
+
+INSERT INTO juvenile(Race,Height,Sex,Eye_Color,Prison_Sentence,inmate_age)VALUES('White',1.30,'F','Blue',6,17);
+Describe juvenile;
+Select*FROM juvenile;
+
+
+
+-- Pre-create the lady_prison table (ensure it matches the structure of the Prison table)
+CREATE TABLE IF NOT EXISTS lady_prison (
+    inmate_id INT AUTO_INCREMENT PRIMARY KEY,
+    Race VARCHAR(10),
+    Height DECIMAL(4, 2),
+    Sex VARCHAR(1),
+    Eye_Color VARCHAR(10),
+    Prison_Sentence INT,
+    CaseID INT,
+    FacillityID INT
+);
+
+--This is a Trigger
+
+CREATE TRIGGER InsertIntoLadyPrison
+AFTER INSERT ON Prison
+FOR EACH ROW
+BEGIN
+    -- Check if the new inmate is female (assuming 'Sex' column is 'F' for female)
+    IF NEW.Sex = 'F' THEN
+        -- Insert the new inmate's data into the 'lady_prison' table
+        INSERT INTO lady_prison (Race, Height, Sex, Eye_Color, Prison_Sentence, CaseID, FacillityID)
+        VALUES (NEW.Race, NEW.Height, NEW.Sex, NEW.Eye_Color, NEW.Prison_Sentence, NEW.CaseID, NEW.FacillityID);
+    END IF;
+END;
+
+
+
+Select*FROM lady_prison;
